@@ -3,26 +3,32 @@
 require 'PHPMailer.php';
 require 'SMTP.php';
 require 'Exception.php';
+require 'lp.php';
 // Переменные, которые отправляет пользователь
 $name = $_POST['name'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
 $message = $_POST['message'];
+$key = $_POST['key'];
 $identifier = $_POST['identifier'];
 $link_page = $_POST['link-page'];
 $mail = new PHPMailer\PHPMailer\PHPMailer();
+
+$l = $l_one . '@' . $l_two;
+$p = $p_one . $key . $p_two;
+
 try {
     $msg = "ok";
     $mail->isSMTP();   
     $mail->CharSet = "UTF-8";                                          
     $mail->SMTPAuth   = true;
     // Настройки вашей почты
-    $mail->Host       = 'smtp.yandex.ru'; // SMTP сервера
-    $mail->Username   = 'ii@web-vluki.ru'; // Логин на почте
-    $mail->Password   = 'yvecjdrenfzqbnbv'; // Пароль на почте
+    $mail->Host       = 'smtp.yandex.ru';
+    $mail->Username   = $l;
+    $mail->Password   = $p; 
     $mail->SMTPSecure = 'ssl';
     $mail->Port       = 465;
-    $mail->setFrom('ii@web-vluki.ru', 'web-vluki'); // Адрес самой почты и имя отправителя
+    $mail->setFrom($l, 'web-vluki'); // Адрес самой почты и имя отправителя
     // Получатель письма
     $mail->addAddress('jimdigris@mail.ru');  
     $mail->addAddress('it@kurs60.ru'); // Ещё один, если нужен
@@ -62,3 +68,4 @@ try {
 } catch (Exception $e) {
     echo "Сообщение не было отправлено. Причина ошибки: {$mail->ErrorInfo}";
 }
+?>
