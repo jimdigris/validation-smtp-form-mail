@@ -1,0 +1,15 @@
+.smtp-form {
+
+}  
+
+.smtp-form .waiting {
+    color: #fbeb0e;
+}
+
+.smtp-form .successfully {
+    color: #37d412;  
+}
+
+.smtp-form .error {
+    color: #d41212;    
+}

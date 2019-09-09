@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <title>Форма обратной связи с валидацией</title>
+
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="style.css">
+
+  <!--[if IE]>
+    <script>
+        document.createElement('header');
+        document.createElement('nav');
+        document.createElement('main');
+        document.createElement('section');
+        document.createElement('article');
+        document.createElement('aside');
+        document.createElement('footer');
+    </script>
+    <![endif]-->
+</head>
+
+<body>
+
+  <form class="smtp-form" autocomplete="off" enctype="multipart/form-data" method="post">
+    <fieldset>
+      <input type="text" id="name" name="name" required placeholder="Укажите ФИО">
+      <input type="email" id="email" name="email" placeholder="Укажите email">
+      <input type="tel" id="phone" name="phone" placeholder="Укажите телефон">
+      <textarea id="message" name="message" cols="40" rows="6"></textarea>
+      <input type="hidden" name="identifier" value="namePage">
+      <input type="hidden" id="link-page" name="link-page" value="">
+      <input type="checkbox" id="notification"><span> Я согласен(а) на обработку моих персональных данных.</span>
+    </fieldset>
+
+    <input type="submit" id="button" value="Отправить" disabled="true">
+    <div id="result" class="result"></div>
+  </form>
+
+  <script src="jquery-3.4.1.min.js"></script>
+  <script src="sendmail.js"></script>
+</body>
+
+</html>
